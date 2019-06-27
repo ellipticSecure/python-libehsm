@@ -10,7 +10,7 @@ The focus of this wrapper is to export the BIP32/Bitcoin specific functions.
 
 Download and install the native shared library for your platform here: [https://ellipticsecure.com/downloads/](https://ellipticsecure.com/downloads/)
 
-pip install python-libehsm
+pip install ehsm
 
 
 ## Example
