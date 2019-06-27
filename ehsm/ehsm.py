@@ -160,6 +160,8 @@ class EHSMLib:
                 slots = (c_ulong * slotLen[0])()
                 self.checkRV(self.ehsmlib.C_GetSlotList(True, slots, slotLen))
                 return slots
+            else:
+                return []
         finally:
             self.ehsmlib.C_Finalize(None)
 
@@ -324,7 +326,7 @@ class EHSMLib:
         xpubversion_bytes = net.to_bytes(length=4, byteorder="big")
         payload = xpubversion_bytes + data.raw[:outSize.value]
         if len(payload) != 78:
-            raise RuntimeError(f"Unexpected xpub payload len {len(payload)}")
+            raise RuntimeError("Unexpected xpub payload len "+ str(len(payload)))
         return base58.b58encode_check(payload).decode("utf-8")
 
     def bip32_import_root_key(self, session, bip32_seed):
